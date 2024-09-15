@@ -34,9 +34,9 @@ android {
 
 //    Урок 7: findViewById, ViewBinding, backing property  (timecode 5:30)
 //    https://www.youtube.com/watch?v=ABoZGM6N3mE&list=PLgPRahgE-GctUcLMcQFvl00xsXqpNJOix&index=7
-//    buildFeatures {
-//        viewBinding = true
-//    }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
