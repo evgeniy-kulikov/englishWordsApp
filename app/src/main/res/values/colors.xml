@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textVariantsColor">#888992</color>
     <color name="textVariantsColor2">#9C27B0</color>
+    <color name="buttonsBlueColor">#2574FF</color>
 </resources>

@@ -156,24 +156,30 @@
         android:layout_width="310dp"
         android:layout_height="58dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="#2574FF"
+        android:backgroundTint="@color/buttonsBlueColor"
         android:text="@string/button_skip"
         android:textAllCaps="true"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
 
 
+<!--    tools:layout_height="150dp"-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0EAD69"
-        android:fitsSystemWindows="true"
+
+        android:visibility="gone"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_height="150dp">
+
+        tools:visibility="gone">
 
         <ImageView
             android:id="@+id/imageView"
@@ -181,10 +187,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="24dp"
+            android:contentDescription="correct answer icon"
             android:src="@drawable/ic_correct"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="correct answer icon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
