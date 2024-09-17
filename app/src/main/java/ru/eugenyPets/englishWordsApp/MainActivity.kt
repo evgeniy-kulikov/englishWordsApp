@@ -26,10 +26,49 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityLearmWordBinding.inflate(layoutInflater)
         setContentView(binding.root)  // получение корневого элемента этой разметки
 
+// нейтральный выбор
+// некорректный выбор
 
 
+        // корректный выбор
+        binding.layoutAnswer3.setOnClickListener {
+//            it.isVisible = false
+            markAnswerCorrect()
+        }
 
 
+    }
+
+    private fun markAnswerCorrect() {
+//      фон всей ячейки
+        binding.layoutAnswer3.background = ContextCompat.getDrawable(
+            this@MainActivity,
+            R.drawable.shape_rounded_containers_correct
+        )
+//      фон номера ячейки
+        binding.tvVariantNumber3.background = ContextCompat.getDrawable(
+            this@MainActivity,
+            R.drawable.shape_rounded_variants_correct
+        )
+
+//      фон номера
+        binding.tvVariantNumber3.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.white
+            )
+        )
+
+//      фон слова
+        binding.tvVariantValue3.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.correctAnswerColor
+            )
+        )
+
+
+        
     }
 }
 

@@ -1,7 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">My Application</string>
-    <string name="my_text">MY TEXT</string>
-    <string name="development">Development</string>
     <string name="button_skip">Пропустить</string>
     <string name="title_correct">Правильно</string>
     <string name="button_continue">Продолжить</string>
