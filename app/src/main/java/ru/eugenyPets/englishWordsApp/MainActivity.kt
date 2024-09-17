@@ -67,8 +67,35 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+        //      Button Continue
+        binding.btnSkip.isVisible = false
 
-        
+        binding.layoutResult.setBackgroundColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.correctAnswerColor
+            )
+        )
+
+        binding.ivResultIcon.setImageDrawable(
+            ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.ic_correct
+            )
+        )
+
+        binding.tvResultMessage.text = resources.getString(R.string.title_correct)
+
+        binding.btnContinue.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.correctAnswerColor
+            )
+        )
+
+//      включаем видимость после всех действий (для исключения мерцаний элементов на экране)
+        binding.layoutResult.isVisible = true
+
     }
 }
 
