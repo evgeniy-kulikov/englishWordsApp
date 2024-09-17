@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)  // получение корневого элемента этой разметки
 
 // нейтральный выбор
-// некорректный выбор
 
 
         // корректный выбор
@@ -36,9 +35,77 @@ class MainActivity : AppCompatActivity() {
             markAnswerCorrect()
         }
 
+        // некорректный выбор
+        binding.layoutAnswer1.setOnClickListener {
+            markAnswerWrong()
+        }
+
 
     }
 
+    // функция неправильного ответа
+    private fun markAnswerWrong() {
+//        фон всей ячейки
+        binding.layoutAnswer1.background = ContextCompat.getDrawable(
+            this@MainActivity,
+            R.drawable.shape_rounded_containers_wrong
+        )
+//      фон номера ячейки
+        binding.tvVariantNumber1.background = ContextCompat.getDrawable(
+            this@MainActivity,
+            R.drawable.shape_rounded_variants_wrong
+        )
+
+//      фон номера
+        binding.tvVariantNumber1.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.white
+            )
+        )
+
+//      фон слова
+        binding.tvVariantValue1.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.wrongAnswerColor
+            )
+        )
+
+        //      Button Continue
+        binding.btnSkip.isVisible = false
+
+        binding.layoutResult.setBackgroundColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.wrongAnswerColor
+            )
+        )
+
+        binding.ivResultIcon.setImageDrawable(
+            ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.ic_wrong
+            )
+        )
+
+        binding.tvResultMessage.text = resources.getString(R.string.title_wrong)
+
+        binding.btnContinue.setTextColor(
+            ContextCompat.getColor(
+                this@MainActivity,
+                R.color.wrongAnswerColor
+            )
+        )
+
+//      включаем видимость после всех действий (для исключения мерцаний элементов на экране)
+        binding.layoutResult.isVisible = true
+
+    }
+
+
+
+    // функция верного ответа
     private fun markAnswerCorrect() {
 //      фон всей ячейки
         binding.layoutAnswer3.background = ContextCompat.getDrawable(
@@ -98,4 +165,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
 
