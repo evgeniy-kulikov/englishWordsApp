@@ -42,7 +42,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/shape_rounded_var"
+                android:background="@drawable/shape_rounded_variants"
                 android:gravity="center"
                 style="@style/TextViewNumberVariantsStyle"
                 android:text="1" />
@@ -69,7 +69,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/shape_rounded_var"
+                android:background="@drawable/shape_rounded_variants"
                 android:gravity="center"
                 style="@style/TextViewNumberVariantsStyle"
                 android:text="2" />
@@ -97,7 +97,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/shape_rounded_var"
+                android:background="@drawable/shape_rounded_variants"
                 android:gravity="center"
                 style="@style/TextViewNumberVariantsStyle"
                 android:text="3" />
@@ -124,7 +124,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/shape_rounded_var"
+                android:background="@drawable/shape_rounded_variants"
                 android:gravity="center"
                 style="@style/TextViewNumberVariantsStyle"
                 android:text="4" />

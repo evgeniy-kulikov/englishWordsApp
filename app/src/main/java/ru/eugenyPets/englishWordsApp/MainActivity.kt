@@ -1,10 +1,7 @@
 package ru.eugenyPets.englishWordsApp
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ActionMenuView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ru.eugenyPets.englishWordsApp.databinding.ActivityLearmWordBinding
@@ -26,7 +23,11 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityLearmWordBinding.inflate(layoutInflater)
         setContentView(binding.root)  // получение корневого элемента этой разметки
 
-// нейтральный выбор
+
+        // нейтральный выбор
+        binding.btnContinue.setOnClickListener {
+            markAnswerNeutral()
+        }
 
 
         // корректный выбор
@@ -40,8 +41,49 @@ class MainActivity : AppCompatActivity() {
             markAnswerWrong()
         }
 
-
     }
+
+    // функция сброса ответа и перехода к следующиму выбору
+    private fun markAnswerNeutral() {
+        with(binding) {
+            for (layout in listOf(layoutAnswer1, layoutAnswer3)) {
+                layout.background = ContextCompat.getDrawable(
+                    this@MainActivity,
+                    R.drawable.shape_rounded_container
+                )
+            }
+
+            for (textView in listOf(tvVariantValue1, tvVariantValue3)) {
+                textView.setTextColor(
+                    ContextCompat.getColor(
+                        this@MainActivity,
+                        R.color.textVariantsColor
+                    )
+                )
+            }
+
+            // функция apply {} для переменной textView производит сразу несколько действий
+            for (textView in listOf(tvVariantNumber1, tvVariantNumber3)) {
+                textView.apply {
+                    background = ContextCompat.getDrawable(
+                        this@MainActivity,
+                        R.drawable.shape_rounded_variants,
+                    )
+                    setTextColor(
+                        ContextCompat.getColor(
+                            this@MainActivity,
+                            R.color.textVariantsColor,
+                        )
+                    )
+                }
+            }
+
+            layoutResult.isVisible = false
+            btnSkip.isVisible = true
+
+        }
+    }
+
 
     // функция неправильного ответа
     private fun markAnswerWrong() {
