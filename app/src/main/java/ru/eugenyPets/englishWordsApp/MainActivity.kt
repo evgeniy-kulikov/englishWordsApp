@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvVariantNumber3,
                 binding.tvVariantValue3,
             )
+            showResultMessage(true)
         }
 
         // некорректный выбор
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvVariantNumber1,
                 binding.tvVariantValue1,
             )
+            showResultMessage(false)
         }
 
     }
@@ -164,9 +166,34 @@ class MainActivity : AppCompatActivity() {
                 R.color.correctAnswerColor
             )
         )
-
-
     }
+
+// Действия с инфотабло при верном/неверном ответе
+    private fun showResultMessage(isCorrect: Boolean) {
+        val color: Int
+        val messageText: String
+        val resultIconResource: Int
+        if (isCorrect) {
+            color = ContextCompat.getColor(this, R.color.correctAnswerColor)
+            resultIconResource = R.drawable.ic_correct
+            messageText = "Correct!" // TODO get from string resources
+        } else {
+            color = ContextCompat.getColor(this, R.color.wrongAnswerColor)
+            resultIconResource = R.drawable.ic_wrong
+            messageText = "Incorrect!" // TODO get from string resources
+        }
+
+        with(binding) {
+            btnSkip.isVisible = false
+            layoutResult.isVisible = true
+            btnContinue.setTextColor(color)
+            layoutResult.setBackgroundColor(color)
+            tvResultMessage.text = messageText
+            ivResultIcon.setImageResource(resultIconResource)
+        }
+    }
+
+
 }
 
 
