@@ -44,7 +44,7 @@ class LearnWordsTrainer {
         Word("Probability", "Вероятность")
     )
 
-    private var currentQuestion: Question? = null
+    private var currentQuestion: Question? = null  // теккущий отображаемый вопрос (изучаемое слово)
 
 // формирование слов для вывода на страницу
     fun getNextQuestion(): Question? {

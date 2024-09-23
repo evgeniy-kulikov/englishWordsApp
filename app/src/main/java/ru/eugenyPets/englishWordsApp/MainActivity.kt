@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityLearmWordBinding? = null
     private val binding
-        get() = _binding ?: throw IllegalStateException("binding for ActivityLearmWordBinding must not be null")
-
+        get() = _binding
+            ?: throw IllegalStateException("binding for ActivityLearmWordBinding must not be null")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,56 +25,81 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityLearmWordBinding.inflate(layoutInflater)
         setContentView(binding.root)  // получение корневого элемента этой разметки
 
-
-        // нейтральный выбор
-        binding.btnContinue.setOnClickListener {
-            markAnswerNeutral(
-                binding.layoutAnswer1,
-                binding.tvVariantNumber1,
-                binding.tvVariantValue1,
-                )
-
-            markAnswerNeutral(
-                binding.layoutAnswer3,
-                binding.tvVariantNumber3,
-                binding.tvVariantValue3,
-            )
-        }
-
-
-        // корректный выбор
-        binding.layoutAnswer3.setOnClickListener {
-            markAnswerCorrect(
-                binding.layoutAnswer3,
-                binding.tvVariantNumber3,
-                binding.tvVariantValue3,
-            )
-            showResultMessage(true)
-        }
-
-        // некорректный выбор
-        binding.layoutAnswer1.setOnClickListener {
-            markAnswerWrong(
-                binding.layoutAnswer1,
-                binding.tvVariantNumber1,
-                binding.tvVariantValue1,
-            )
-            showResultMessage(false)
-        }
-
+//        Создаем экзкмпляр класса LearnWordsTrainer
+        val trainer = LearnWordsTrainer()
+        showNextQuestion(trainer)
     }
+
+
+    private fun showNextQuestion(trainer: LearnWordsTrainer) {
+        val firstQuestion: Question? = trainer.getNextQuestion()
+        with(binding) {
+            if (firstQuestion == null || firstQuestion.variants.size < NUMBER_OF_ANSWERS) {
+                tvQuestionWord.isVisible = false
+                layoutVariants.isVisible = false
+                btnSkip.text = "Complete"
+            } else {
+                btnSkip.isVisible = true
+                tvQuestionWord.isVisible = true
+                tvQuestionWord.text = firstQuestion.correctAnswer.original
+
+                tvVariantValue1.text = firstQuestion.variants[0].translate
+                tvVariantValue2.text = firstQuestion.variants[1].translate
+                tvVariantValue3.text = firstQuestion.variants[2].translate
+                tvVariantValue4.text = firstQuestion.variants[3].translate
+
+            }
+        }
+    }
+
+
+//        // нейтральный выбор
+//        binding.btnContinue.setOnClickListener {
+//            markAnswerNeutral(
+//                binding.layoutAnswer1,
+//                binding.tvVariantNumber1,
+//                binding.tvVariantValue1,
+//                )
+//
+//            markAnswerNeutral(
+//                binding.layoutAnswer3,
+//                binding.tvVariantNumber3,
+//                binding.tvVariantValue3,
+//            )
+//        }
+//
+//        // корректный выбор
+//        binding.layoutAnswer3.setOnClickListener {
+//            markAnswerCorrect(
+//                binding.layoutAnswer3,
+//                binding.tvVariantNumber3,
+//                binding.tvVariantValue3,
+//            )
+//            showResultMessage(true)
+//        }
+//
+//        // некорректный выбор
+//        binding.layoutAnswer1.setOnClickListener {
+//            markAnswerWrong(
+//                binding.layoutAnswer1,
+//                binding.tvVariantNumber1,
+//                binding.tvVariantValue1,
+//            )
+//            showResultMessage(false)
+//        }
+
 
     // функция сброса ответа и перехода к следующиму выбору
     private fun markAnswerNeutral(
         layoutAnswer: LinearLayout,
         tvVariantNumber: TextView,
         tvVariantValue: TextView,
-        ) {
+    ) {
 
         layoutAnswer.background = ContextCompat.getDrawable(
             this@MainActivity,
             R.drawable.shape_rounded_container
-            )
+        )
 
         // функция apply {} для переменной textView производит сразу несколько действий
         tvVariantValue.apply {
@@ -94,9 +119,9 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.getColor(
                 this@MainActivity,
                 R.color.textVariantsColor
-                )
             )
-        }
+        )
+    }
 
 
     // функция неправильного ответа
@@ -168,7 +193,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-// Действия с инфотабло при верном/неверном ответе
+    // Действия с инфотабло при верном/неверном ответе
     private fun showResultMessage(isCorrect: Boolean) {
         val color: Int
         val messageText: String
@@ -192,8 +217,9 @@ class MainActivity : AppCompatActivity() {
             ivResultIcon.setImageResource(resultIconResource)
         }
     }
-
-
 }
+
+
+
 
 

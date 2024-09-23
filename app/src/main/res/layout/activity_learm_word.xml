@@ -20,6 +20,7 @@
         android:contentDescription="close image button" />
 
     <LinearLayout
+        android:id="@+id/layoutVariants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
@@ -154,6 +155,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="32dp"
         android:fontFamily="@font/nunito_bold"
+        android:paddingHorizontal="8dp"
         android:text="Galaxy"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
