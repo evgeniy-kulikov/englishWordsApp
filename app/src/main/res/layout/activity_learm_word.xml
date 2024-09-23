@@ -34,7 +34,7 @@
             android:id="@+id/layoutAnswer1"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/shape_rounded_container"
+            android:background="@drawable/shape_rounded_containers"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/shape_rounded_container"
+            android:background="@drawable/shape_rounded_containers"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/shape_rounded_container"
+            android:background="@drawable/shape_rounded_containers"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -121,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/shape_rounded_container"
+            android:background="@drawable/shape_rounded_containers"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 

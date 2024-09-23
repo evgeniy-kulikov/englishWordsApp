@@ -28,6 +28,24 @@ class MainActivity : AppCompatActivity() {
 //        Создаем экзкмпляр класса LearnWordsTrainer
         val trainer = LearnWordsTrainer()
         showNextQuestion(trainer)
+
+        // Окрашиваем все поля в нейтральный цвет
+        with(binding) {
+            btnContinue.setOnClickListener {
+                layoutResult.isVisible = false
+                markAnswerNeutral(layoutAnswer1, tvVariantNumber1, tvVariantValue1)
+                markAnswerNeutral(layoutAnswer2, tvVariantNumber2, tvVariantValue2)
+                markAnswerNeutral(layoutAnswer3, tvVariantNumber3, tvVariantValue3)
+                markAnswerNeutral(layoutAnswer4, tvVariantNumber4, tvVariantValue4)
+                showNextQuestion(trainer)
+            }
+
+            // В случае отказа отвечать - показываем следующее слово для изучения
+            btnSkip.setOnClickListener {
+                showNextQuestion(trainer)
+            }
+        }
+
     }
 
 
@@ -48,48 +66,53 @@ class MainActivity : AppCompatActivity() {
                 tvVariantValue3.text = firstQuestion.variants[2].translate
                 tvVariantValue4.text = firstQuestion.variants[3].translate
 
+                layoutAnswer1.setOnClickListener {
+                    if (trainer.checkAnswer(0)) {
+                        markAnswerCorrect(layoutAnswer1, tvVariantNumber1, tvVariantValue1)
+                        showResultMessage(true)
+                    } else {
+                        markAnswerWrong(layoutAnswer1, tvVariantNumber1, tvVariantValue1)
+                        showResultMessage(false)
+                    }
+                }
+
+                layoutAnswer2.setOnClickListener {
+                    if (trainer.checkAnswer(1)) {
+                        markAnswerCorrect(layoutAnswer2, tvVariantNumber2, tvVariantValue2)
+                        showResultMessage(true)
+                    } else {
+                        markAnswerWrong(layoutAnswer2, tvVariantNumber2, tvVariantValue2)
+                        showResultMessage(false)
+                    }
+                }
+
+                layoutAnswer3.setOnClickListener {
+                    if (trainer.checkAnswer(2)) {
+                        markAnswerCorrect(layoutAnswer3, tvVariantNumber3, tvVariantValue3)
+                        showResultMessage(true)
+                    } else {
+                        markAnswerWrong(layoutAnswer3, tvVariantNumber3, tvVariantValue3)
+                        showResultMessage(false)
+                    }
+                }
+
+                layoutAnswer4.setOnClickListener {
+                    if (trainer.checkAnswer(3)) {
+                        markAnswerCorrect(layoutAnswer4, tvVariantNumber4, tvVariantValue4)
+                        showResultMessage(true)
+                    } else {
+                        markAnswerWrong(layoutAnswer4, tvVariantNumber4, tvVariantValue4)
+                        showResultMessage(false)
+                    }
+                }
             }
         }
     }
 
 
-//        // нейтральный выбор
-//        binding.btnContinue.setOnClickListener {
-//            markAnswerNeutral(
-//                binding.layoutAnswer1,
-//                binding.tvVariantNumber1,
-//                binding.tvVariantValue1,
-//                )
-//
-//            markAnswerNeutral(
-//                binding.layoutAnswer3,
-//                binding.tvVariantNumber3,
-//                binding.tvVariantValue3,
-//            )
-//        }
-//
-//        // корректный выбор
-//        binding.layoutAnswer3.setOnClickListener {
-//            markAnswerCorrect(
-//                binding.layoutAnswer3,
-//                binding.tvVariantNumber3,
-//                binding.tvVariantValue3,
-//            )
-//            showResultMessage(true)
-//        }
-//
-//        // некорректный выбор
-//        binding.layoutAnswer1.setOnClickListener {
-//            markAnswerWrong(
-//                binding.layoutAnswer1,
-//                binding.tvVariantNumber1,
-//                binding.tvVariantValue1,
-//            )
-//            showResultMessage(false)
-//        }
 
 
-    // функция сброса ответа и перехода к следующиму выбору
+    // функция apply {} для переменной textView производит сразу несколько действий
     private fun markAnswerNeutral(
         layoutAnswer: LinearLayout,
         tvVariantNumber: TextView,
@@ -98,11 +121,11 @@ class MainActivity : AppCompatActivity() {
 
         layoutAnswer.background = ContextCompat.getDrawable(
             this@MainActivity,
-            R.drawable.shape_rounded_container
+            R.drawable.shape_rounded_containers,
         )
 
-        // функция apply {} для переменной textView производит сразу несколько действий
-        tvVariantValue.apply {
+        // функция сброса ответа и перехода к следующиму выбору
+        tvVariantNumber.apply {
             background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.shape_rounded_variants,
@@ -115,7 +138,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        tvVariantNumber.setTextColor(
+        tvVariantValue.setTextColor(
             ContextCompat.getColor(
                 this@MainActivity,
                 R.color.textVariantsColor
