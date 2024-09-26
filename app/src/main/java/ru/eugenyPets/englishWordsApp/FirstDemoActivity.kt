@@ -14,12 +14,22 @@ class FirstDemoActivity: AppCompatActivity() {
         binding = ActivityFitstDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with(binding) {
-            btnOpenSecond.setOnClickListener {
-                // объявляем Intent (намерение) откуда - куда
-                val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java)
-                startActivity(intent)  // запуск намерения
-            }
+        // открытие другой Activity без передачи данных
+//        with(binding) {
+//            btnOpenSecond.setOnClickListener {
+//                // объявляем Intent (намерение) откуда - куда
+//                val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java)
+//                startActivity(intent)  // запуск намерения
+//            }
+//        }
+
+        // открытие другой Activity с передачей данных
+        binding.btnOpenSecond.setOnClickListener {
+            val intent = Intent(this@FirstDemoActivity, SecondDemoActivity::class.java)
+            intent.putExtra("EXTRA_KEY_ANY_TEXT", "Any User Text")
+            intent.putExtra("EXTRA_KEY_ANY_NUMBER", 2024)
+            startActivity(intent)
         }
+
     }
 }
